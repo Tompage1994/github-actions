@@ -9,12 +9,10 @@ LABEL "com.github.actions.description"="Run integration tests using Ansible AWX"
 LABEL "com.github.actions.icon"="package"
 LABEL "com.github.actions.color"="purple"
 
+RUN apk add --update --no-cache python3 git py3-pip gcc python3-dev libressl-dev musl-dev libffi-dev && \
+    git clone https://github.com/ansible/awx.git
 
-RUN yum install python38 && \
-    git clone https://github.com/ansible/awx.git && \
-    pip install ansible docker docker-compose && \
-    cd awx/installer && \
-    ansible-playbook -i inventory install.yml -e create_preload_data=false
+RUN pip3 install ansible docker docker-compose
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
