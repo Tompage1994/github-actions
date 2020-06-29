@@ -1,0 +1,17 @@
+name: 'AWX'
+description: 'Run integration tests using Ansible AWX'
+author: 'Red Hat CoP'
+branding:
+  icon: monitor
+  color: purple
+inputs:
+  version:
+    description: "AWX version"
+    default: "devel"
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.version }}
