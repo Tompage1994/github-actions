@@ -9,7 +9,7 @@ LABEL "com.github.actions.description"="Run integration tests using Ansible AWX"
 LABEL "com.github.actions.icon"="package"
 LABEL "com.github.actions.color"="purple"
 
-RUN apk add --update --no-cache python3 git py3-pip gcc python3-dev libressl-dev musl-dev libffi-dev && \
+RUN apk add --update --no-cache python3 git py3-pip gcc python3-dev libressl-dev musl-dev libffi-dev curl bash && \
     git clone https://github.com/ansible/awx.git
 
 RUN pip3 install ansible docker docker-compose
