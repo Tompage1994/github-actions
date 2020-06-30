@@ -9,9 +9,13 @@ inputs:
     description: "AWX version"
     default: "devel"
     required: false
+  test_script:
+    description: ".sh file containing tests to run"
+    required: true
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.version }}
+    - ${{ inputs.test_script }}
